@@ -31,10 +31,10 @@ mdp = pomdp.create_MDP()
 normalization = total_count/4
 sampler = MultinomialSampler(total_count=total_count,state_dim=state_dim)
 solver = Q_Learning_Solver(mdp=mdp,sampler=sampler,normalization=normalization,iterations=40000)
-q_value_net = solver.solve()
+#q_value_net = solver.solve()
 
 #... or load learnt approximation
-#q_value_net = torch.load('q_value.pt')
+q_value_net = torch.load('Q_function_Multinomial.pt')
 
 
 

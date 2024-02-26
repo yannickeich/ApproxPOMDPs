@@ -13,13 +13,13 @@ agent = BinomialQueueingAgent(pomdp.t_model,pomdp.o_model,initial_param=torch.te
 
 
 #Load data here
-#These are uploaded
+#From BinomialQueuing_Qfunction.py
 state_trajectory = torch.load('state_traj.pt')
 obs_trajectory = torch.load('obs_traj.pt')
 action_trajectory = torch.load('action_traj.pt')
 filter_trajectory = torch.load('filter_traj.pt')
 
-# The following needs to be first computed and saved in Particle.py
+#From Particle.py
 particle_state_trajectory = torch.load('state_trajs.pt')
 
 

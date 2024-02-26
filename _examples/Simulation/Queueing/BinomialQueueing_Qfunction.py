@@ -10,7 +10,7 @@ from packages.solvers.particle_filter import ParticleFilter
 from _examples.figure_configuration_aistats import figure_configuration_aistats
 
 # Entropic Matching + QMDP Control for the queueing problem based on solving the MDP with Q_Learning
-
+#
 
 # Create Problem
 pomdp = QueueingPOMDP(obs_rate=torch.tensor(0.5))
