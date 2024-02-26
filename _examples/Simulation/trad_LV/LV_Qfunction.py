@@ -20,11 +20,12 @@ mdp = pomdp.create_MDP()
 bounds = torch.tensor([[0,150],[0,150],])
 normalization = 100
 sampler = DiscreteUniformSampler(bounds=bounds)
-q_value_net = torch.load('q_value_net.pt')
-solver = Q_Learning_Solver(mdp=mdp,sampler=sampler,normalization=normalization,iterations=200000,q_value_net=q_value_net)
-q_value_net = solver.solve()
+
+solver = Q_Learning_Solver(mdp=mdp,sampler=sampler,normalization=normalization,iterations=200000)
+#q_value_net = solver.solve()
+
 # or load Q_function
-# torch.save('q_value_net.pt')
+q_value_net  = torch.load('LVq_value_net.pt')
 
 
 
@@ -33,7 +34,7 @@ q_value_net = solver.solve()
 
 #Simulation
 t_grid = torch.tensor([0.0,5.0])
-initial_state = torch.tensor([100,100])
+initial_state = torch.tensor([50,50])
 initial_param = initial_state.float()
 agent = PoissonCRNAgent(pomdp.t_model, pomdp.o_model, initial_param, t_grid[0], Q_function=q_value_net, normalization=normalization)
 state_trajectory, obs_trajectory, action_trajectory, reward_trajectory = pomdp.simulate(t_grid,agent,initial_state)
